@@ -1,0 +1,25 @@
+.responsive-image-about {
+  width: 100%; /* Bulunduğu container kadar genişlesin */
+  height: auto; /* Oran korunsun, yükseklik içeriğe bağlı büyüsün */
+  max-height: 700px; /* Çok fazla büyümesini önlemek için sınır koyabilirsin */
+  object-fit: cover; /* Oranı bozmayarak içeriği kaplasın */
+  border-radius: 5px;
+}
+
+.section-title p span {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.content p,
+.content ul li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.book-a-table h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.book-a-table p {
+  font-size: 1.25rem;
+}
