@@ -229,7 +229,7 @@ h6 {
 .header {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 20px;
+  padding: 15px;
   transition: all 0.5s;
   z-index: 997;
 }
@@ -260,8 +260,8 @@ h6 {
 .header .btn-getstarted:focus {
   color: var(--contrast-color);
   background: var(--accent-color);
-  font-size: 17px;
-  padding: 11px 26px;
+  font-size: 16px;
+  padding: 10px 24px;
   margin: 0;
   border-radius: 50px;
   transition: 0.3s;
@@ -324,7 +324,7 @@ h6 {
     display: none;
   }
   .navmenu {
-    padding: 0;
+    padding: 0px;
   }
 
   .navmenu ul {
@@ -351,7 +351,7 @@ h6 {
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-color);
-    font-size: 17px;
+    font-size: 16px;
     padding: 0 2px;
     font-family: var(--nav-font);
     font-weight: 500;
@@ -466,7 +466,7 @@ h6 {
   }
 
   .btn-getstarted {
-    padding: 8px 15px;
+    padding: 6px 15px;
     font-size: 14px;
   }
   .mobile-nav-toggle {
