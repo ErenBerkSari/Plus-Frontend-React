@@ -39,6 +39,48 @@ function Menu() {
     return () => lightbox.destroy(); // Unmount edildiğinde temizle
   }, [products]); // products değiştiğinde çalıştır
 
+  // const handleSaveProduct = () => {
+  //   const formData = new FormData();
+  //   formData.append("productName", productData.productName);
+  //   formData.append("productDesc", productData.productDesc);
+  //   formData.append("productPrice", productData.productPrice);
+
+  //   // Eğer yeni bir resim seçildiyse ekle
+  //   if (productData.productImage) {
+  //     formData.append("productImage", productData.productImage);
+  //   }
+
+  //   if (editMode && selectedProduct) {
+  //     // ID ve data'yı doğru formatta gönder
+  //     dispatch(
+  //       updateProduct({
+  //         id: selectedProduct._id,
+  //         updatedData: formData,
+  //       })
+  //     );
+  //   } else {
+  //     dispatch(addProduct(formData));
+  //   }
+
+  //   // İşlem sonrası temizlik
+  //   setShowModal(false);
+  //   setEditMode(false);
+  //   setSelectedProduct(null);
+  //   setProductData({
+  //     productName: "",
+  //     productDesc: "",
+  //     productPrice: "",
+  //     productImage: null,
+  //   });
+  // };
+  // Product ekleme/güncelleme form işleyicisi
+  const handleFileChange = (e) => {
+    setProductData({
+      ...productData,
+      productImage: e.target.files[0], // Dosyayı state'e kaydet
+    });
+  };
+
   const handleSaveProduct = () => {
     const formData = new FormData();
     formData.append("productName", productData.productName);
@@ -51,7 +93,7 @@ function Menu() {
     }
 
     if (editMode && selectedProduct) {
-      // ID ve data'yı doğru formatta gönder
+      // Update işlemi
       dispatch(
         updateProduct({
           id: selectedProduct._id,
@@ -59,6 +101,7 @@ function Menu() {
         })
       );
     } else {
+      // Create işlemi
       dispatch(addProduct(formData));
     }
 
@@ -73,7 +116,6 @@ function Menu() {
       productImage: null,
     });
   };
-
   const handleEditProduct = (product) => {
     setSelectedProduct(product);
     setProductData({
