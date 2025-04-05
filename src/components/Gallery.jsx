@@ -67,13 +67,13 @@ function Gallery() {
   }
   return (
     <section id="gallery" className="gallery section light-background">
-      <div className="container section-title" data-aos="fade-up">
+      <div className="container section-title">
         <p>
           <span>Galerimiz</span>
         </p>
       </div>
 
-      <div className="container" data-aos="fade-up" data-aos-delay="100">
+      <div className="container">
         {isLoading ? (
           <div className="text-center p-5">
             <div className="spinner-border" role="status">
