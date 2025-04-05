@@ -119,7 +119,7 @@ function Owners() {
             Ortak Ekle
           </button>
         )}
-        <div className="container section-title" data-aos="fade-up">
+        <div className="container section-title">
           <p>
             <span className="description-title">Ortaklar</span>
           </p>
@@ -131,8 +131,6 @@ function Owners() {
               <div
                 key={owner._id || index}
                 className="col-lg-4 d-flex align-items-stretch"
-                data-aos="fade-up"
-                data-aos-delay={(index + 1) * 100}
               >
                 <div className="team-member">
                   <div className="member-img">
