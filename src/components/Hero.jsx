@@ -154,18 +154,13 @@ function Hero() {
         <div className="container">
           <div className="row gy-4 justify-content-center justify-content-lg-between">
             <div className="col-lg-5 d-flex flex-column justify-content-center">
-              <h1 style={{ textAlign: "center" }} data-aos="fade-up">
-                {hero.heroTitle}
-              </h1>
+              <h1 style={{ textAlign: "center" }}>{hero.heroTitle}</h1>
               <div style={{ textAlign: "center" }}>
-                <p data-aos="fade-up" data-aos-delay="100" maxLength={200}>
-                  {hero.heroDesc}
-                </p>
+                <p maxLength={200}>{hero.heroDesc}</p>
               </div>
 
               <div
                 className="d-flex justify-content-center mt-1"
-                data-aos="fade-up"
                 data-aos-delay="200"
               >
                 <a
