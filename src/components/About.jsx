@@ -195,7 +195,7 @@ function About() {
             }}
           />
         )}
-        <div className="container section-title" data-aos="fade-up">
+        <div className="container section-title">
           <p>
             <span className="description-title">Hakkımızda</span>
           </p>
@@ -211,8 +211,6 @@ function About() {
                 flexGrow: 1, // İçeriğe göre esnek büyüme
               }}
               className="col-lg-7"
-              data-aos="fade-up"
-              data-aos-delay="100"
             >
               <img
                 style={{
@@ -229,7 +227,7 @@ function About() {
                 <p>{about.aboutContact}</p>
               </div>
             </div>
-            <div className="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+            <div className="col-lg-5">
               <div className="content ps-0 ps-lg-5">
                 <p className="fst-italic">{about.aboutIntro}</p>
                 <ul>
