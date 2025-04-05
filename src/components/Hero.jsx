@@ -182,7 +182,10 @@ function Hero() {
               </div>
             </div>
 
-            <div className="col-lg-5 order-1 order-lg-2 hero-img d-flex justify-content-center align-items-center">
+            <div
+              className="col-lg-5 order-1 order-lg-2 hero-img d-flex justify-content-center align-items-center"
+              data-aos="zoom-out"
+            >
               <img
                 style={{
                   borderRadius: "10px",
