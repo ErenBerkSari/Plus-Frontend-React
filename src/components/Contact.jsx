@@ -80,13 +80,13 @@ function Contact() {
             }}
           />
         )}
-        <div className="container section-title" data-aos="fade-up">
+        <div className="container section-title">
           <p>
             <span>İletişim</span>
           </p>
         </div>
 
-        <div className="container" data-aos="fade-up" data-aos-delay="100">
+        <div className="container">
           <div className="mb-5">
             <iframe
               style={{ width: "100%", height: "400px" }}
