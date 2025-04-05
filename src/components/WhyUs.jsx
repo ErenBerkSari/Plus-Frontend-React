@@ -165,7 +165,7 @@ function WhyUs() {
         )}
         <div className="container">
           <div className="row gy-4">
-            <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div className="col-lg-4">
               <div style={{ height: "100%" }} className="why-box">
                 <h3 style={{ fontSize: "2.5rem" }}>{whyUs.whyUsTitle}</h3>
                 <p style={{ fontSize: "1.1rem", lineHeight: "1.8" }}>
@@ -186,8 +186,6 @@ function WhyUs() {
                   scrollbarWidth: "none", // Firefox için scrollbar gizleme
                   msOverflowStyle: "none", // IE/Edge için scrollbar gizleme
                 }}
-                data-aos="fade-up"
-                data-aos-delay="200"
                 onMouseDown={handleMouseDown}
                 onMouseLeave={handleMouseLeave}
                 onMouseUp={handleMouseUp}
@@ -200,8 +198,6 @@ function WhyUs() {
                       width: "280px",
                       flex: "0 0 280px",
                     }}
-                    data-aos="fade-up"
-                    data-aos-delay={300 + index * 100}
                   >
                     <div
                       className="icon-box"
