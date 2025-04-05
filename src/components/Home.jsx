@@ -5,13 +5,10 @@ import Hero from "./Hero";
 import About from "./About";
 
 import WhyUs from "./WhyUs";
-// import Gallery from "./Gallery";
-const Gallery = React.lazy(() => import("./Gallery"));
-const Contact = React.lazy(() => import("./Contact"));
-// import Contact from "./Contact";
+import Gallery from "./Gallery";
+import Contact from "./Contact";
 import Menu from "./Menu";
 import Owners from "./Owners";
-import Loader from "./Loader";
 function Home() {
   return (
     <>
@@ -20,13 +17,9 @@ function Home() {
       <About />
       <WhyUs />
       <Menu />
-      <Suspense fallback={<Loader />}>
-        <Gallery />
-      </Suspense>
+      <Gallery />
       <Owners />
-      <Suspense fallback={<Loader />}>
-        <Contact />
-      </Suspense>
+      <Contact />
     </>
   );
 }
