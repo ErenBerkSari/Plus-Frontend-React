@@ -180,7 +180,7 @@ function Menu() {
         </div>
 
         <div className="container">
-          <div className="tab-content" data-aos="fade-up" data-aos-delay="200">
+          <div className="tab-content">
             <div className="tab-pane fade active show" id="menu-starters">
               <div className="row gy-5">
                 {products?.map((product, index) => (
