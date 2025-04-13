@@ -28,32 +28,6 @@ export const login = createAsyncThunk(
   }
 );
 
-export const register = createAsyncThunk(
-  "auth/register",
-  async (userData, { rejectWithValue }) => {
-    try {
-      const response = await axiosInstance.post("/auth/register", userData, {
-        withCredentials: true,
-      });
-      const { userId, email, role } = response.data;
-      return { userId, email, role };
-    } catch (error) {
-      console.error("Register işlemi sırasında hata: ", error);
-      if (error.response) {
-        return rejectWithValue(
-          error.response.data.message || "Bilinmeyen bir hata oluştu."
-        );
-      } else if (error.request) {
-        return rejectWithValue(
-          "Sunucuya ulaşılamıyor. Lütfen internet bağlantınızı kontrol edin."
-        );
-      } else {
-        return rejectWithValue("Bir hata oluştu. Lütfen tekrar deneyin.");
-      }
-    }
-  }
-);
-
 export const logout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
@@ -117,19 +91,6 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.error = action.payload;
         state.authIsLoading = false;
-      })
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = true;
-        state.error = null;
-        state.authIsLoading = false;
-      })
-      .addCase(register.rejected, (state, action) => {
-        state.error = action.payload;
-        state.authIsLoading = false;
-      })
-      .addCase(register.pending, (state) => {
-        state.authIsLoading = true;
       })
       .addCase(logout.fulfilled, (state) => {
         console.log("Logout başarılı");

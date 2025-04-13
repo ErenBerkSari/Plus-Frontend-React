@@ -8,7 +8,7 @@ import Loader from "./Loader";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.auth);
+  const { authIsLoading } = useSelector((state) => state.auth);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -36,7 +36,7 @@ function Login() {
       alert("An error occurred during the login process. Please try again.");
     }
   };
-  if (isLoading) {
+  if (authIsLoading) {
     return (
       <div
         style={{
@@ -80,7 +80,7 @@ function Login() {
           </button>
         </form>
         <p className="register-link">
-          <Link to="/register">Kaydol</Link>
+          <Link to="/">Anasayfa</Link>
         </p>
       </div>
     </div>
