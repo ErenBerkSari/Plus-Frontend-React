@@ -13,7 +13,7 @@ function Home() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE_URL}/ping`)
       .then(() => console.log("Backend pinglendi"))
-      .catch((err) => console.log("Ping hatası:", err));
+      .catch((err) => console.log("Ping hatası"));
   }, []);
 
   return (
