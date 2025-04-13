@@ -56,7 +56,6 @@ export const loadUser = createAsyncThunk(
       const { userId, role } = response.data;
       return { userId, role };
     } catch (error) {
-      console.error("Kullanıcı bilgileri yüklenirken hata:", error);
       return rejectWithValue("Oturum bilgileri yüklenemedi.");
     }
   }
