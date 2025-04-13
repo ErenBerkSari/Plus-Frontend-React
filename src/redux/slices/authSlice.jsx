@@ -56,6 +56,7 @@ export const loadUser = createAsyncThunk(
       const { userId, role } = response.data;
       return { userId, role };
     } catch (error) {
+      console.error("Kullanıcı bilgileri yüklenirken hata:", error);
       return rejectWithValue("Oturum bilgileri yüklenemedi.");
     }
   }
@@ -91,7 +92,9 @@ const authSlice = createSlice({
         state.error = action.payload;
         state.authIsLoading = false;
       })
+
       .addCase(logout.fulfilled, (state) => {
+        console.log("Logout başarılı");
         state.user = null;
         state.isLoggedIn = false;
         state.error = null;

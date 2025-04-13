@@ -118,6 +118,7 @@ function Hero() {
       </div>
     );
   }
+  console.log("hero component:", hero);
   // Görsel veya video kaynakları için tam URL alın
   const getFullUrl = (path) => {
     if (!path) return null;

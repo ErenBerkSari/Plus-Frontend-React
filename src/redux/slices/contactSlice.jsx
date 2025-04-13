@@ -6,6 +6,7 @@ export const getContact = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/contact/getContact`);
+      console.log("Response:", response.data); // Konsola yazdır
 
       return response.data;
     } catch (error) {

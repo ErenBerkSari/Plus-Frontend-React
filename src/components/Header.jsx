@@ -28,6 +28,8 @@ function Header() {
       </div>
     );
   }
+  console.log("isLogged:", isLoggedIn);
+  console.log("user:", user);
 
   return (
     <header

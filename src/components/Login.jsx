@@ -8,13 +8,14 @@ import Loader from "./Loader";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { authIsLoading } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Sayfanın yenilenmesini engeller
     try {
+      console.log("Login işlemi başlatılıyor..");
       const result = await dispatch(
         login({
           email: loginEmail,
@@ -22,8 +23,10 @@ function Login() {
         })
       );
       if (login.fulfilled.match(result)) {
+        console.log("Giriş başarılı: ", result);
         navigate("/");
       } else {
+        console.log("Giriş başarısız: ", result);
         alert(
           result.payload || "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin."
         );
@@ -33,7 +36,7 @@ function Login() {
       alert("An error occurred during the login process. Please try again.");
     }
   };
-  if (authIsLoading) {
+  if (isLoading) {
     return (
       <div
         style={{
