@@ -15,7 +15,6 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault(); // Sayfanın yenilenmesini engeller
     try {
-      console.log("Login işlemi başlatılıyor..");
       const result = await dispatch(
         login({
           email: loginEmail,
@@ -23,10 +22,8 @@ function Login() {
         })
       );
       if (login.fulfilled.match(result)) {
-        console.log("Giriş başarılı: ", result);
         navigate("/");
       } else {
-        console.log("Giriş başarısız: ", result);
         alert(
           result.payload || "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin."
         );

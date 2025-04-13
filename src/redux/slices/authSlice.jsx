@@ -93,7 +93,6 @@ const authSlice = createSlice({
         state.authIsLoading = false;
       })
       .addCase(logout.fulfilled, (state) => {
-        console.log("Logout başarılı");
         state.user = null;
         state.isLoggedIn = false;
         state.error = null;

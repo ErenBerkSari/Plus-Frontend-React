@@ -54,11 +54,6 @@ export const updateProduct = createAsyncThunk(
   async ({ id, updatedData }, { rejectWithValue }) => {
     try {
       // FormData doğrudan gönderilebilir, tekrar FormData oluşturmaya gerek yok
-      console.log("Güncelleme için gönderilen ID:", id);
-      console.log("Gönderilen FormData içeriği:");
-      for (let pair of updatedData.entries()) {
-        console.log(pair[0] + ": " + pair[1]);
-      }
 
       const response = await axiosInstance.put(
         `/product/updateProduct/${id}`,

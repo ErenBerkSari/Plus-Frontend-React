@@ -6,7 +6,6 @@ export const getWhyUs = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/whyUs/getWhyUs`);
-      console.log("Response:", response.data); // Konsola yazdır
 
       return response.data;
     } catch (error) {
