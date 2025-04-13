@@ -11,9 +11,7 @@ import Menu from "./Menu";
 import Owners from "./Owners";
 function Home() {
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/ping`)
-      .then(() => console.log("Backend pinglendi"))
-      .catch((err) => console.log("Ping hatası"));
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/ping`).catch(() => {});
   }, []);
 
   return (
