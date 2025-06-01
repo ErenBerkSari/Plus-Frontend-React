@@ -20,7 +20,7 @@ function Header() {
     setIsMobileMenuOpen(false);
   };
   // Sayfada kaydırma işlemini dinleyerek aktif bölümü belirleyen fonksiyon
-
+  //Test
   if (authIsLoading) {
     return (
       <div>
