@@ -62,6 +62,8 @@ function Hero() {
       selector: ".glightbox",
       onOpen: () => {
         setVideoLoading(true);
+        // Fallback: 5 saniye sonra loading'i kapat
+        setTimeout(() => setVideoLoading(false), 5000);
       },
       onClose: () => {
         setVideoLoading(false);
@@ -185,13 +187,17 @@ function Hero() {
                     data-gallery="videoGallery"
                     data-type="video"
                     style={{
-                      cursor: "pointer",
+                      cursor: videoLoading ? "not-allowed" : "pointer",
                       padding: "5px 10px",
                       borderRadius: "5px",
                       textDecoration: "none",
                       color: "inherit",
                       position: "relative",
+                      pointerEvents: videoLoading ? "none" : "auto",
+                      opacity: videoLoading ? 0.6 : 1,
                     }}
+                    tabIndex={videoLoading ? -1 : 0}
+                    aria-disabled={videoLoading}
                   >
                     {videoLoading ? (
                       <CircularProgress size={20} style={{ marginRight: "8px" }} />
