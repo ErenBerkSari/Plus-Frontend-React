@@ -32,11 +32,34 @@ function WhyUs() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
+  const [autoScroll, setAutoScroll] = useState(true);
+
+  // 🎯 Otomatik kaydırma efekti
+  useEffect(() => {
+    if (!autoScroll) return;
+
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    // Smooth scroll animation
+    const scroll = () => {
+      if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += 1;
+      }
+    };
+
+    const interval = setInterval(scroll, 30);
+
+    return () => clearInterval(interval);
+  }, [autoScroll]);
+
   const handleMouseDown = (e) => {
     setIsDown(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
-    setAutoScroll(false); // Kullanıcı müdahale edince otomatik kaydırmayı durdur
+    setAutoScroll(false);
   };
 
   const handleMouseLeave = () => {
@@ -52,7 +75,7 @@ function WhyUs() {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Sürükleme hassasiyeti
+    const walk = (x - startX) * 1.5; // Reduced multiplier for smoother dragging
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -71,26 +94,6 @@ function WhyUs() {
       setEditedWhyUs(whyUs);
     }
   }, [whyUs]);
-  const [autoScroll, setAutoScroll] = useState(true); // Kullanıcı müdahale ederse duracak
-
-  // 🎯 Otomatik kaydırma efekti
-  useEffect(() => {
-    if (!autoScroll) return; // Kullanıcı müdahale ettiyse çalıştırma
-
-    const interval = setInterval(() => {
-      if (scrollRef.current) {
-        scrollRef.current.scrollLeft += 2; // Her adımda 2px kaydır
-        if (
-          scrollRef.current.scrollLeft + scrollRef.current.clientWidth >=
-          scrollRef.current.scrollWidth
-        ) {
-          scrollRef.current.scrollLeft = 0; // Başa döndür
-        }
-      }
-    }, 50); // 20ms'de bir kaydır
-
-    return () => clearInterval(interval);
-  }, [autoScroll]);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -183,8 +186,11 @@ function WhyUs() {
                   gap: "15px",
                   cursor: isDown ? "grabbing" : "grab",
                   userSelect: "none",
-                  scrollbarWidth: "none", // Firefox için scrollbar gizleme
-                  msOverflowStyle: "none", // IE/Edge için scrollbar gizleme
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  scrollBehavior: "smooth",
+                  WebkitOverflowScrolling: "touch",
+                  transition: "scroll-left 0.3s ease-out",
                 }}
                 onMouseDown={handleMouseDown}
                 onMouseLeave={handleMouseLeave}
