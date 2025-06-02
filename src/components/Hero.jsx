@@ -12,7 +12,6 @@ import {
   TextField,
   IconButton,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import GLightbox from "glightbox";
 
@@ -22,7 +21,6 @@ function Hero() {
   const { user, authIsLoading } = useSelector((store) => store.auth);
 
   const [open, setOpen] = useState(false);
-  const [videoLoading, setVideoLoading] = useState(true);
   // const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [editedHero, setEditedHero] = useState({
     heroTitle: "",
@@ -60,19 +58,8 @@ function Hero() {
   useEffect(() => {
     const lightbox = GLightbox({
       selector: ".glightbox",
-      onOpen: () => {
-        setVideoLoading(true);
-        // Fallback: 5 saniye sonra loading'i kapat
-        setTimeout(() => setVideoLoading(false), 5000);
-      },
-      onClose: () => {
-        setVideoLoading(false);
-      },
-      onReady: () => {
-        setVideoLoading(false);
-      }
     });
-    return () => lightbox.destroy();
+    return () => lightbox.destroy(); // Bileşen kaldırıldığında temizle
   }, []);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -121,10 +108,6 @@ function Hero() {
 
     dispatch(updateHero(formData));
     handleClose();
-  };
-
-  const handleVideoLoad = () => {
-    setVideoLoading(false);
   };
 
   if (isLoading && authIsLoading) {
@@ -180,33 +163,22 @@ function Hero() {
                 className="d-flex justify-content-center mt-1"
                 data-aos-delay="200"
               >
-                {videoUrl && (
-                  <a
-                    href={videoUrl}
-                    className="btn-watch-video d-flex align-items-center glightbox"
-                    data-gallery="videoGallery"
-                    data-type="video"
-                    style={{
-                      cursor: videoLoading ? "not-allowed" : "pointer",
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      textDecoration: "none",
-                      color: "inherit",
-                      position: "relative",
-                      pointerEvents: videoLoading ? "none" : "auto",
-                      opacity: videoLoading ? 0.6 : 1,
-                    }}
-                    tabIndex={videoLoading ? -1 : 0}
-                    aria-disabled={videoLoading}
-                  >
-                    {videoLoading ? (
-                      <CircularProgress size={20} style={{ marginRight: "8px" }} />
-                    ) : (
-                      <PlayCircleIcon />
-                    )}
-                    <span>Videoyu İzle</span>
-                  </a>
-                )}
+                <a
+                  href={videoUrl}
+                  className="btn-watch-video d-flex align-items-center glightbox"
+                  data-gallery="videoGallery"
+                  data-type="video"
+                  style={{
+                    cursor: "pointer",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <PlayCircleIcon />
+                  <span>Videoyu İzle</span>
+                </a>
               </div>
             </div>
 
